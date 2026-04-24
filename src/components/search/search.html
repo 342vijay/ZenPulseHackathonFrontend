@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center align-items-center vh-100"
+     style="background: linear-gradient(135deg, #e0f7fa, #e3f2fd);">
+
+  <div class="card shadow p-4 rounded-4 border-0 w-100" style="max-width: 900px;">
+
+    <h4 class="text-center mb-4 fw-semibold">🔍 Search Hotels</h4>
+
+    <div class="row g-3">
+
+      <!-- Location -->
+      <div class="col-md-4">
+        <label class="form-label">Location</label>
+        <select class="form-select rounded-3" [formControl]="city">
+          <option value="">-- Select City --</option>
+
+          @if (cities().length > 0) {
+            @for (c of cities(); track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          } @else {
+            <option disabled>Loading...</option>
+          }
+
+        </select>
+      </div>
+
+      <!-- From Date -->
+      <div class="col-md-3">
+        <label class="form-label">From Date</label>
+        <input 
+          type="date" 
+          class="form-control rounded-3"
+          [formControl]="fromDate">
+      </div>
+
+      <!-- To Date -->
+      <div class="col-md-3">
+        <label class="form-label">To Date</label>
+        <input 
+          type="date" 
+          class="form-control rounded-3"
+          [formControl]="toDate"
+          [min]="fromDate.value">
+      </div>
+
+      <!-- Button -->
+      <div class="col-md-2 d-flex align-items-end">
+        <button 
+          class="btn btn-primary w-100 fw-semibold"
+          [disabled]="!city.value || !fromDate.value || !toDate.value"
+          (click)="search()">
+          Search
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
