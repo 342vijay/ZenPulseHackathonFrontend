@@ -1,0 +1,33 @@
+<div class="container">
+
+  <!-- 🔍 Price Slider -->
+  <div class="filter-bar">
+    <label>Max Price:</label>
+
+    <input type="range"
+           min="1000"
+           max="10000"
+           step="500"
+           [formControl]="priceRange">
+
+    <span>₹{{ priceRange.value }}</span>
+  </div>
+
+  <!-- 🏨 Rooms -->
+  @for (room of filteredRooms(); track room.roomId) {
+
+    <div class="room-card">
+      <h3>{{ room.roomType }}</h3>
+
+      <p><strong>Price:</strong> ₹{{ room.price }}</p>
+
+      <p><strong>Amenities:</strong> {{ room.ammenities }}</p>
+    </div>
+
+  }
+
+  @if (filteredRooms().length === 0) {
+    <p>No rooms found</p>
+  }
+
+</div>

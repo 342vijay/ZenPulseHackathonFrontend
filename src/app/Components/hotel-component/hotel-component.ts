@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { HotelService } from '../../Services/hotel-service';
 import { SearchStateService } from '../../Services/search-state-service';
 import { HotelResponseDto } from '../../Dtos/HotelResponseDto';
@@ -9,7 +9,7 @@ import { HotelResponseDto } from '../../Dtos/HotelResponseDto';
   templateUrl: './hotel-component.html',
   styleUrl: './hotel-component.css',
 })
-export class HotelComponent {
+export class HotelComponent implements OnInit{
 private hotelService = inject(HotelService);
   private searchService = inject(SearchStateService);
 
