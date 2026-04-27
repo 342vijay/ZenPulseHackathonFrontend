@@ -1,0 +1,28 @@
+<div class="container">
+
+  <h2>Available Hotels</h2>
+
+  @if (hotels().length > 0) {
+
+    <div class="hotel-list">
+
+      @for (hotel of hotels(); track hotel.hotelId) {
+
+        <div class="hotel-card">
+          <h3>{{ hotel.name }}</h3>
+          <p>📍 {{ hotel.location }}</p>
+
+          <button>View Rooms</button>
+        </div>
+
+      }
+
+    </div>
+
+  } @else {
+
+    <p>No hotels found for your search.</p>
+
+  }
+
+</div>
